@@ -1,0 +1,22 @@
+
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+  <div class="form-group">
+    <label for="firstName" class="font-weight-bold">First Name</label>
+    <input name="first" ngModel #firstName="ngModel"
+    required pattern="qbert" minlength="3" maxlength="10" 
+     (change)="log(first)" type="text" class="form-control"/>
+     <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">  
+        <div *ngIf="firstName.errors.required">First Name Is Required.</div>  
+        <div *ngIf="firstName.errors.minlength">First Name Should Be Minimum 3 Characters.</div>  
+        <div *ngIf="firstName.errors.pattern">First Name Doesn't Match the Pattern.</div>  
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="comment" class="font-weight-bold">Comment</label>
+      <textarea required ngModel name="comment" id="comment" cols="30" rows="5" class="form-control"></textarea>
+    </div>
+  <button class="btn btn-primary">Submit</button>
+
+</form>
